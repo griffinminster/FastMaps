@@ -74,7 +74,6 @@ g.add_weighted_edges_from([('S', 'A', 3), ('S', 'B', 5), ('S', 'C', 4),
                            ('C', 'DUMMY', 0), ('DUMMY', 'C', 0)])
 # Only right non-directed??
 
-
 nx.draw(g, with_labels=True)
 plt.show()
 
