@@ -81,3 +81,38 @@ def _print_graph(graph):
             else:
                 print(graph.matrix[i][j], end=" ")
         print()
+
+
+def _kruskal(graph):
+    uf = unionfind(len(graph))
+    forest = WuGraph(len(graph))
+    for edge in graph.get_all_edges_increasing():
+        if uf.find(edge.u) != uf.find(edge.v):
+            uf.unite(edge.u, edge.v)
+            forest.set_edge(edge.u, edge.v, edge.weight)
+    return forest
+
+
+def _dijkstra(graph, start):
+    dist = [float('inf')] * len(graph)
+    pred = [None] * len(graph)
+    todo = []
+    done = [None] * len(graph)
+
+    dist[start] = 0
+    heap.heappush(todo, start)
+
+    counter = 0
+    while len(todo) > 0:
+        v = heap.heappop(todo)
+        if v not in done:
+            done[counter] = v
+            adj_nodes = list(graph.get_adjacent(v))
+            for node in adj_nodes:
+                weight = graph.get_edge(v, node)
+                if dist[v] + weight < dist[node]:
+                    dist[node] = dist[v] + weight
+                    pred[node] = v
+                    heap.heappush(todo, node)
+            counter += 1
+    return pred
