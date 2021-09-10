@@ -1,3 +1,28 @@
+# from collections import deque
+# import wugraph as graph
+#
+#
+# def find_route(mst, start, end):
+#     pred = graph._dijkstra(mst, start)
+#     wanted_id = end
+#     if pred is None:
+#         return None
+#     lst = deque()
+#     all_good = False
+#
+#     while wanted_id is not None:
+#         if wanted_id == start:
+#             all_good = True
+#         lst.appendleft(wanted_id)
+#         searched_id = pred[wanted_id]
+#         wanted_id = searched_id
+#
+#     if all_good:
+#         return list(lst)
+#     else:
+#         return None
+
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
